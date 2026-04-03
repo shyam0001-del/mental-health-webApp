@@ -6,7 +6,7 @@ export default function Games() {
   const [rotation, setRotation] = useState(0);
   const [hovered, setHovered] = useState(null);
   const [opening, setOpening] = useState(false);
-  const [hoverBtn, setHoverBtn] = useState(false); // 🔥 NEW
+  const [hoverBtn, setHoverBtn] = useState(false);
 
   // FLOAT ANIMATION
   useEffect(() => {
@@ -21,6 +21,20 @@ export default function Games() {
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
   }, []);
+
+  // 🔥 FIXED NAVIGATION WITH SOUND TRIGGER
+  const handleStartRelax = () => {
+    setOpening(true);
+
+    // 🔊 unlock audio before navigation
+    const audio = new Audio("/relax.mp4");
+    audio.muted = true;
+    audio.play().catch(() => {});
+
+    setTimeout(() => {
+      navigate("/relax");
+    }, 600);
+  };
 
   const handleOpenLogin = () => {
     setOpening(true);
@@ -66,7 +80,7 @@ export default function Games() {
             Breathe. Play. Calm your thoughts with mindful activities.
           </p>
 
-          {/* 🔥 PREMIUM BUTTON */}
+          {/* 🔥 UPDATED BUTTON */}
           <button
             style={{
               ...styles.startBtn,
@@ -83,7 +97,7 @@ export default function Games() {
             }}
             onMouseEnter={() => setHoverBtn(true)}
             onMouseLeave={() => setHoverBtn(false)}
-            onClick={() => navigate("/relax")}
+            onClick={handleStartRelax}   // 🔥 FIXED HERE
           >
             Start Relaxing →
           </button>
@@ -182,7 +196,6 @@ const styles = {
     maxWidth: "500px",
   },
 
-  // 🔥 PROFESSIONAL TITLE
   title: {
     fontSize: "52px",
     fontWeight: "700",
@@ -203,7 +216,6 @@ const styles = {
     color: "rgba(255,255,255,0.9)",
   },
 
-  // 🔥 BUTTON STYLE
   startBtn: {
     marginTop: "30px",
     padding: "15px 30px",

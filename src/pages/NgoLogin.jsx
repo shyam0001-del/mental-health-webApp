@@ -13,7 +13,7 @@ export default function UserLogin() {
         {/* LEFT SIDE */}
         <div style={styles.left}>
 
-          {/* 🔥 MODERN BACK BUTTON */}
+          {/* 🔥 BACK BUTTON */}
           <button
             style={styles.backBtn}
             onMouseEnter={(e) => {
@@ -36,9 +36,22 @@ export default function UserLogin() {
             Securely access your dashboard and manage your impact
           </p>
 
-          <input placeholder="Email address" style={styles.input} />
-          <input type="password" placeholder="Password" style={styles.input} />
+          <input
+            placeholder="Email address"
+            style={styles.input}
+            onFocus={(e) => (e.target.style.border = "1px solid #ffb347")}
+            onBlur={(e) => (e.target.style.border = "1px solid rgba(0,0,0,0.08)")}
+          />
 
+          <input
+            type="password"
+            placeholder="Password"
+            style={styles.input}
+            onFocus={(e) => (e.target.style.border = "1px solid #ffb347")}
+            onBlur={(e) => (e.target.style.border = "1px solid rgba(0,0,0,0.08)")}
+          />
+
+          {/* 🔥 FIXED NAVIGATION */}
           <button
             style={{
               ...styles.button,
@@ -49,7 +62,7 @@ export default function UserLogin() {
             }}
             onMouseEnter={() => setHoverBtn(true)}
             onMouseLeave={() => setHoverBtn(false)}
-            onClick={() => navigate("/games")}
+            onClick={() => navigate("/ngo-dashboard")}  // ✅ FIXED HERE
           >
             Login →
           </button>
@@ -120,7 +133,6 @@ const styles = {
       "linear-gradient(to bottom right, #fdf3c7, #f6c97a)",
   },
 
-  // 🔥 UPDATED BACK BUTTON STYLE
   backBtn: {
     alignSelf: "flex-start",
     marginBottom: "20px",
@@ -183,6 +195,7 @@ const styles = {
     background: "#f9f9f9",
     outline: "none",
     fontSize: "14px",
+    transition: "0.2s",
   },
 
   button: {

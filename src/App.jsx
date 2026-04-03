@@ -17,6 +17,7 @@ import NgoLogin from "./pages/NgoLogin";
 import UserLogin from "./pages/UserLogin";
 import SpecialistLogin from "./pages/SpecialistLogin";
 import SignInPage from "./pages/SignInPage";
+import NgoDashboard from "./pages/NgoDashboard";
 
 // 🔥 AI BOT
 import MentasBot from "./components/MentasBot";
@@ -26,11 +27,12 @@ function App() {
     <BrowserRouter>
       <>
         <Routes>
-          <Route path="/" element={<Journal />} />
+          <Route path="/" element={<Games />} />
+<Route path="/journal" element={<Journal />} />
           <Route path="/chat" element={<ChatBot />} />
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/history" element={<JournalHistory />} />
-
+          <Route path="/ngo-dashboard" element={<NgoDashboard />} />
           <Route path="/ngo-login" element={<NgoLogin />} />
           <Route path="/journal/:id" element={<JournalDetail />} />
           <Route path="/specialist-login" element={<SpecialistLogin />} />
